@@ -16,6 +16,23 @@ $ lsblk
 # sdb              8:16   1   7.3G  0 disk  
 # ...
 
-$ dd if=/dev/zero of=/dev/sdb
+$ sudo dd if=/dev/zero of=/dev/sdb
 
 $ sudo mkfs.vfat -F 32 /dev/sdb -I
+
+$ vim ~/.bashrc
+
+# Add function:
+#    sha256() {
+#        echo "$1 $2" | sha256sum --check
+#    }
+
+$ source ~/.bashrc
+
+# Download from https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/
+#    debian-live-10.6.0-amd64-kde.iso
+#    SHA256SUMS
+
+$ sha256  e719271b725a41fa6aac48d89cbb9bcbb8dbdeeef49855dbad3e60f876aa997a  ~/Downloads/debian-live-10.6.0-amd64-kde.iso
+
+$ sudo dd bs=4M if=/home/gonzalo/Downloads/debian-live-10.6.0-amd64-kde.iso of=/dev/sdb status=progress oflag=sync
