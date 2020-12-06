@@ -10,4 +10,5 @@ sudo apt install codium
 
 # Extensions & config:
 
-...
+# eslint: dbaeumer.vscode-eslint
+# gitlens: eamodio.gitlens
