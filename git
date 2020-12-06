@@ -4,7 +4,8 @@ sudo apt install git
 git --version
 
 git config --global core.editor vim
-
+git config --global user.email your-email@example.com
+git config --global user.name your-username
 git config --global alias.cb "checkout -b"
 git config --global alias.ch checkout
 git config --global alias.cm "commit -m"
