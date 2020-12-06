@@ -1,0 +1,14 @@
+# Web interface:
+#  Prerequisites:
+#   1. Chromium:
+#     Settings -> Privacy and security -> Site Settings -> Cookies and site data -> Allow (below Block and Clear on exit) -> Add:
+#       [*.]microsoft.com
+#       [*.]microsoftonline.com
+#       [*.]teams.skype.com
+#       [*.]teams.microsoft.com
+#       [*.]sfbassets.com
+#       [*.]skypeforbusiness.com
+
+# Log in: microsoft.com/es-ar/microsoft-365/microsoft-teams/group-chat-software
+# Click on "Iniciar sesión" or "Sign In"
+# Indec login: youruser@indec.gob.ar

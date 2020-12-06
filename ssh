@@ -1,0 +1,48 @@
+# Check for existing keys:
+    ls -al ~/.ssh
+
+#  There must be a .ssh folder with file/file.pub files pairs
+
+# Generating keys:
+#  Ed25519 algorithm:
+    ssh-keygen -t ed25519 -C "your_email@example.com"
+#  RSA algorithm (for legacy systems):
+    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+#  In both cases, enter file name and passwords
+
+#  It generates two keys one private and one public (homonymous to private but with .pub extension)
+
+# Add generated key to the ssh-agent:
+#  Start ssh-agent:
+    eval "$(ssh-agent -s)"
+#  Add private key:
+    ssh-add ~/.ssh/your_private_key_filename
+
+# Copy public key to remote server
+    ssh-copy-id -i ~/.ssh/your_public_key.pub your-username@remote-host
+#  (Or got to servers web site and follow instructions)
+
+# Test:
+    ssh -T user@host
+
+# Manage many ssh public keys:
+#  Create more ssk key pairs
+
+#  Configure ssh client:
+vim ~/.ssh/config
+
+#  Enter data (one full block by key):
+# Host (enter IP)
+#  HostName (enter host name)
+#  User (enter username)
+#  PreferredAuthentications (publickey, password or any other available)
+#  IdentityFile (private key filename, relating to the public key copied to remote server)
+
+# Example for GitHub:
+#  Host and HostName: github.com
+#  Test: ssh -T git@github.com
+
+# Example for GitLab:
+#  Host and HostName: gitlab.com
+#  Test: ssh -T git@gitlab.com
