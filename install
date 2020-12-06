@@ -1,0 +1,27 @@
+# check hardware and bios (at least network interfaces, peripherals, etc.)
+# Full disk standard installation
+
+$ lsblk
+
+# check if "sda" is for hdd (formating)
+
+$ sudo dd if=/dev/zero of=/dev/sda
+
+# reboot with live usb
+# follow standard installation
+# graphical install
+# language and region default (english, american english, united states)
+# select network interface (wi-fi, in my case)
+# select network
+# select network type (wpa/wpa2 psk, in my case)
+# wi-fi password
+# select host name, root password, user name, account and password
+# select partitioning method (guided - entire disk an lvm, in my case)
+# select disk to partition
+# all files in one partition (new users)
+# remove any existing logical volume
+# write changes and configure lvm
+# max (amount of volume group)
+# Force UEFI (yes, in my case, don't need to boot on any other local system)
+# confirm (yes)
+
