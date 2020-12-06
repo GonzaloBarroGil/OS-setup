@@ -19,4 +19,8 @@ $ apt install openfortivpn
 
 $ vim /etc/openfortivpn/config
 
+# u & u
+$ sudo apt-get install wget
 
+# u & u
+$ sudo apt install curl
