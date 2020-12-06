@@ -36,3 +36,13 @@ $ source ~/.bashrc
 $ sha256  e719271b725a41fa6aac48d89cbb9bcbb8dbdeeef49855dbad3e60f876aa997a  ~/Downloads/debian-live-10.6.0-amd64-kde.iso
 
 $ sudo dd bs=4M if=/home/gonzalo/Downloads/debian-live-10.6.0-amd64-kde.iso of=/dev/sdb status=progress oflag=sync
+
+#-------------------------------------------
+
+# KDE: Download from https://cdimage.debian.org/images/unofficial/non-free/images-including-firmware/10.6.0-live+nonfree/amd64/iso-hybrid/
+# 4a910e1a5b2dbd06aa8ebc8d0d8fed555d81babfdde65da666ea5e77c22af566  debian-live-10.6.0-amd64-kde+nonfree.iso
+
+$ sha256 4a910e1a5b2dbd06aa8ebc8d0d8fed555d81babfdde65da666ea5e77c22af566  debian-live-10.6.0-amd64-kde+nonfree.iso
+
+$ sudo dd bs=4M if=/home/gonzalo/Downloads/debian-live-10.6.0-amd64-kde+nonfree.iso of=/dev/sdb status=progress oflag=sync
+
