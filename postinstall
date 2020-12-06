@@ -1,0 +1,22 @@
+# Access root to add devindec user to sudoers
+
+$ su -
+
+$ apt update
+
+$ apt upgrade
+
+$ apt-get install sudo
+
+$ usermod -a -G sudo devindec
+
+$ reboot now
+
+
+$ apt install vim
+
+$ apt install openfortivpn
+
+$ vim /etc/openfortivpn/config
+
+
