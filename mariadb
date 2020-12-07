@@ -1,0 +1,9 @@
+# https://bobcares.com/blog/install-dbeaver-on-ubuntu/
+
+# Update the system apt index:
+$ sudo apt -y update
+$ sudo apt -y install software-properties-common gnupg2
+$ sudo apt -y upgrade
+$ sudo reboot
+
+...
