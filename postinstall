@@ -24,3 +24,8 @@ $ sudo apt-get install wget
 
 # u & u
 $ sudo apt install curl
+
+# u & u
+$ sudo apt -y install default-jdk
+
+$ java -version
