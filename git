@@ -1,7 +1,9 @@
 sudo apt update
-sudo apt install git
+sudo apt install git bash-completion
 
 git --version
+
+source /etc/bash_completion.d/git-prompt
 
 git config --global core.editor vim
 git config --global user.email your-email@example.com
@@ -14,3 +16,6 @@ git config --global alias.lo "log --oneline"
 git config --global alias.lod "log --oneline --decorate"
 git config --global alias.adog "log --all --decorate --oneline --graph"
 git config --global alias.psho "push origin"
+
+git config --global credential.helper store --file
+# default ~/.git_credentials
