@@ -8,17 +8,33 @@ $ sudo reboot
 
 # Import MariaDB GPG key (check in https://mariadb.com/kb/en/gpg/):
 $ sudo apt-key adv –recv-keys –keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8
-
+# FAILED
+#
 # Add the repository:
 $ sudo add-apt-repository ‘deb [arch=amd64] http://mariadb.mirror.liquidtelecom.com/repo/10.4/debian buster main’
+# NOT ADDED
+#
+
+# ALTERNATIVE:
+## https://downloads.mariadb.org/mariadb/repositories/#distro=Debian&distro_release=buster--buster&mirror=fder&version=10.5
+sudo apt-get install software-properties-common dirmngr
+sudo apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] https://espejito.fder.edu.uy/mariadb/repo/10.5/debian buster main'
+
+sudo apt update
+sudo apt install mariadb-server
+# FAILED
+
 
 # Update and install MariaDB:
 $ sudo apt update
 $ sudo apt install mariadb-server mariadb-client
-
+# NOT INSTALLED
+#
 # Secure MariaDB server
 $ sudo mysql_secure_installation
-
+# NOT SECURED
+#
 # Enter current password for root (enter for none): Just press the Enter
 # Set root password? [Y/n]: Y
 # New password: Enter password
@@ -27,3 +43,4 @@ $ sudo mysql_secure_installation
 # Disallow root login remotely? [Y/n]: Y
 # Remove test database and access to it? [Y/n]: Y
 # Reload privilege tables now? [Y/n]: Y
+# NOT MADE
