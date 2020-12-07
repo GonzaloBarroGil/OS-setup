@@ -6,4 +6,24 @@ $ sudo apt -y install software-properties-common gnupg2
 $ sudo apt -y upgrade
 $ sudo reboot
 
-...
+# Import MariaDB GPG key (check in https://mariadb.com/kb/en/gpg/):
+$ sudo apt-key adv –recv-keys –keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8
+
+# Add the repository:
+$ sudo add-apt-repository ‘deb [arch=amd64] http://mariadb.mirror.liquidtelecom.com/repo/10.4/debian buster main’
+
+# Update and install MariaDB:
+$ sudo apt update
+$ sudo apt install mariadb-server mariadb-client
+
+# Secure MariaDB server
+$ sudo mysql_secure_installation
+
+# Enter current password for root (enter for none): Just press the Enter
+# Set root password? [Y/n]: Y
+# New password: Enter password
+# Re-enter new password: Repeat password
+# Remove anonymous users? [Y/n]: Y
+# Disallow root login remotely? [Y/n]: Y
+# Remove test database and access to it? [Y/n]: Y
+# Reload privilege tables now? [Y/n]: Y
