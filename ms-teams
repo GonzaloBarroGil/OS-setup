@@ -1,3 +1,13 @@
+# Download .deb package from https://www.microsoft.com/es-ar/microsoft-365/microsoft-teams/download-app
+
+cd ~/Downloads
+sudo apt-get update
+sudo apt-get upgrade
+# check teams package version
+sudo dpkg -i teams_x.x.xx.xxxxx_amd64.deb
+sudo apt-get install -f
+sudo apt-get install ./teams_x.x.xx.xxxxx_amd64.deb
+
 # Web interface:
 #  Prerequisites:
 #   1. Chromium:
