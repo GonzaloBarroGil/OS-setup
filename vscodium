@@ -12,3 +12,12 @@ sudo apt install codium
 
 # eslint: dbaeumer.vscode-eslint
 # gitlens: eamodio.gitlens
+
+# When "Visual Studio Code is unable to watch for file changes in this large workspace" (error ENOSPC) message is displayed:
+sudo vim /etc/sysctl.conf
+
+# Add next line to the end:
+fs.inotify.max_user_watches=524288
+
+# Run to apply:
+sudo sysctl -p

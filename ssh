@@ -1,3 +1,7 @@
+# If not installed (check with apt list | grep openssh):
+sudo apt install openssh-server openssh-client
+
+## CLIENT:
 # Check for existing keys:
     ls -al ~/.ssh
 
@@ -46,3 +50,32 @@ vim ~/.ssh/config
 # Example for GitLab:
 #  Host and HostName: gitlab.com
 #  Test: ssh -T git@gitlab.com
+
+## SERVER:
+# Check for service:
+sudo systemctl status sshd
+
+# Start service (if stopped):
+sudo systemctl start sshd
+
+# Restart:
+sudo systemctl restart sshd
+
+# Stop:
+sudo systemctl stop sshd
+
+# Check ports available:
+ss -lpn
+
+# Edit sshd_config:
+sudo vim /etc/ssh/sshd_config
+
+# Port changed
+# Listen Address 0.0.0.0
+# SyslogFacility AUTH
+# PermitRootLogin no
+# PasswordAuthentication yes
+# PermitEmptyPasswords no
+# Banner none
+
+# Connect from other device with: ssh -p port-number user@host
