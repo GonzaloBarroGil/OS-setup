@@ -1,0 +1,26 @@
+# https://kokegudiel2.medium.com/instalacion-de-sql-developer-en-linux-7d6b49c40ef4
+# AdoptOpenJDK (https://adoptopenjdk.net/installation.html?variant=openjdk11&jvmVariant=openj9#linux-pkg):
+# Installers:
+# Linux RPM and DEB installer packages:
+# Check codename:
+$ cat /etc/os-release | grep VERSION_CODENAME | cut -d = -f 2
+# (buster)
+# Necessary packages:
+$ sudo apt-get install wget apt-transport-https gnupg
+# Import the AdoptOpenJDK GPG key:
+$ wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+# Configure AdoptOpenJDK's apt repository by replacing the values in angle brackets:
+# (replace "<codename>" by "buster")
+$ echo "deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb <codename> main" | sudo tee /etc/apt/sources.list.d/adoptopenjdk.list
+$ sudo apt-get update
+# Check variants:
+$ sudo apt-cache search adoptopenjdk
+$ sudo apt-get install adoptopenjdk-11-hotspot
+$ java --version
+
+# SQL Developer (https://www.oracle.com/tools/downloads/sqldev-downloads.html):
+# "Other Platforms" (requires login):
+# (Downloaded sqldeveloper-20.2.0.175.1842-no-jre.zip)
+$ cd ~/Downloads/
+$ sudo unzip sqldeveloper-20.2.0.175.1842-no-jre.zip -d /opt/
+$ sudo chmod +x /opt/sqldeveloper/sqldeveloper.sh
