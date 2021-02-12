@@ -34,10 +34,11 @@ $ vim ~/.bashrc
 $ source ~/.bashrc
 
 # GNOME + NONFREE:
-# Download from https://cdimage.debian.org/images/unofficial/non-free/images-including-firmware/10.6.0-live+nonfree/amd64/iso-hybrid/
-#    debian-live-10.6.0-amd64-gnome+nonfree.iso
+# Download from https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current-live/amd64/iso-hybrid/
+#    debian-live-10.8.0-amd64-gnome+nonfree.iso
 #    SHA256SUMS
 
+$ sha256 f4478e8ab4970f4cd9ef51f0a3cb1d43af9fa633b1ba2883baebdb23e1f6056c ~/Downloads/debian-live-10.8.0-amd64-gnome+nonfree.iso
 $ sha256 4b98e242672abd13abb9f4419a447a59c3df374b03ce8215934838e823c36525 ~/Downloads/debian-live-10.6.0-amd64-gnome+nonfree.iso
 
 $ sudo dd bs=4M if=/home/gonzalo/Downloads/debian-live-10.6.0-amd64-gnome+nonfree.iso of=/dev/sdb status=progress oflag=sync
