@@ -1,4 +1,9 @@
 # check hardware and bios (at least network interfaces, peripherals, etc.)
+# Loading Missing Firmware:
+# http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/
+# Additional firmare:
+# http://packages.debian.org/search?keywords=firmware
+
 # Full disk standard installation
 
 $ lsblk
@@ -24,4 +29,3 @@ $ sudo dd if=/dev/zero of=/dev/sda
 # max (amount of volume group)
 # Force UEFI (yes, in my case, don't need to boot on any other local system)
 # confirm (yes)
-
