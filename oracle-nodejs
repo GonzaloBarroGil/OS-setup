@@ -1,0 +1,17 @@
+Oracle Requirements (https://oracle.github.io/node-oracledb/INSTALL.html#instzip):
+   mkdir -p /opt/oracle  
+   cd /opt/oracle
+   wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basic-linuxx64.zip
+   unzip instantclient-basic-linuxx64.zip
+   
+   apt-get install -y libaio1
+   
+   # check folder and version
+   sudo sh -c "echo /opt/oracle/instantclient_19_9 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+   sudo ldconfig
+   
+   # check folder and version
+   export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9:$LD_LIBRARY_PATH
+
+   rm -i *jdbc* *occi* *mysql* *mql1* *ipc1* *jar uidrvci genezi adrci
+
