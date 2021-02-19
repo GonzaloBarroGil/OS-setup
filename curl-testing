@@ -1,0 +1,44 @@
+# Using curl to test token auth APIs
+
+# 1. Set credentials file (save in the folder where tests will be done):
+    vim .login
+
+    # The content of .login must have this structure:
+	{
+	    "username": "...",
+	    "password": "..."
+	}
+
+
+# 2. Request for token. e.g.:
+    curl POST 'http://localhost:3012/public-api/login' --header 'Content-Type: application/json' --data-binary '@.login'
+
+# 2.b. Copy response token.
+
+# 2.a. Alternative: login on browser and copy token from inspector.
+
+# 3. Set token file (save in the folder where tests will be done):
+    vim .token
+
+    # The content of .token must be like:
+    Authorization: Bearer copied_token_hex_string
+
+# 4. Test any endpoint passing the above token file, e.g.:
+
+    # GET:
+    curl 'http://localhost:3012/api/assignments/state/2/ups/1' -H "$(cat .token)"
+
+# 5. Set body file for POST, PUT or PATCH requests. e.g.:
+
+    vim .body
+
+    {
+        "address": {
+           "id": 1,
+           "teamLeader": "a",
+           "pollster": "b"
+        }
+    }
+
+    curl PUT 'http://localhost:3012/api/assignments' -H "Content-Type: application/json" -H "$(cat .token)" --data-raw "$(cat .body)"
+
