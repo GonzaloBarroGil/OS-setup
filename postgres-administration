@@ -1,0 +1,85 @@
+# PostgreSQL Administration commands
+# https://www.librebyte.net/base-de-datos/comandos-para-administrar-postgres/
+
+# Postgres file system:
+#  /etc/postgresql
+#  └── 9.6
+#      └── main
+#          ├── environment
+#          ├── pg_ctl.conf
+#          ├── pg_hba.conf
+#          ├── pg_ident.conf
+#          ├── postgresql.conf
+#          └── start.conf
+
+# Start session:
+ sudo -u postgres psql
+
+# List databases:
+ \l
+
+# Select database:
+ \c dbname;
+
+# List tables:
+ \dt
+
+# Create database:
+ CREATE DATABASE dbname OWNER username;
+
+# Drop database:
+ DROP DATABASE dbname;
+
+
+# Backups
+# Backup:
+ pg_dump dbname > dump.sql
+
+# Restore
+ psql dbname < dump.sql
+
+# Restore stopping on error
+ psql --set ON_ERROR_STOP=on dbname < dump.sql
+
+# Restore stopping on error and rollback
+ psql --set ON_ERROR_STOP=on --single-transaction dbname < dump.sql
+
+# Backup and restore to another host in one step
+ pg_dump -h host1 dbname | psql -h host2 dbname
+
+
+# Users
+# List users:
+ \du
+
+# Create user:
+ CREATE USER username WITH PASSWORD 'MYPASS';
+
+# Drop user:
+ DROP USER username;
+
+# Set as superuser:
+ ALTER USER username WITH SUPERUSER;
+
+# Connect:
+ psql -U usuario -h 127.0.0.1 -d basedatos
+
+# Set server for remote access
+ vim postgresql.conf
+# Add e.g.:
+ listen_addresses = 'localhost, 192.168.100.29'
+ 
+ vim pg_hba.conf
+# Search for IPv4 local and add rule, e.g:
+ # TYPE  DATABASE        USER            ADDRESS             METHOD
+ host    all             all         192.168.100.1/24        md5 
+# Restrict for only one user, e.g.:
+host    basedatos             usuario         192.168.100.1/24        md5
+
+# Help:
+\?
+# or
+\h
+
+# Quit
+\q
