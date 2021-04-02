@@ -1,0 +1,49 @@
+sudo apt update
+
+sudo apt install mysql-server
+
+sudo mysql_secure_installation
+
+# Validate password:
+Y 
+
+# Password validation level (MEDIUM):
+1
+
+# Change root password (remember):
+Y
+
+# Continue with the password provided:
+Y
+
+# Remove anonymous users:
+Y
+
+# Disable remote root login:
+Y
+
+# Remove test database and access to it:
+Y
+
+# Reload privilege tables:
+Y
+
+# Done.
+
+# Switch auth from auth_socket to mysql_native_password:
+# (if do not do so previously)
+sudo mysql
+ or
+sudo mysql -u root -p
+
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+# If root appears with plugin 'auth_socket':
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<password>';
+
+# (change <password> to a strong password)
+
+FLUSH PRIVILEGES;
+
+exit

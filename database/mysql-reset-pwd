@@ -1,0 +1,22 @@
+# Source: https://raiolanetworks.es/blog/recuperar-contrasena-root-mysql-mariadb/
+
+# Stop service:
+/etc/init.d/mysql stop
+# Start safe mode and keep running on terminal:
+sudo mysqld_safe --skip-grant-tables
+
+# Another terminal (it will not ask for password):
+mysql -u root
+
+> use mysql;
+> update user set password=PASSWORD("........") where User='root';
+> flush privileges;
+> quit
+
+# Back to safe mode terminal and stop it:
+Ctrl+Z
+
+# Restart service:
+/etc/init.d/mysql start
+
+FvJEcNID@&vn$H2sAP

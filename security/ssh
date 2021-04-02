@@ -1,6 +1,9 @@
 # If not installed (check with apt list | grep openssh):
 sudo apt install openssh-server openssh-client
 
+# Known hosts and public keys:
+  ~/.ssh/
+
 ## CLIENT:
 # Check for existing keys:
     ls -al ~/.ssh
@@ -54,15 +57,19 @@ vim ~/.ssh/config
 ## SERVER:
 # Check for service:
 sudo systemctl status sshd
+ # or: sudo /etc/init.d/ssh status
 
 # Start service (if stopped):
 sudo systemctl start sshd
+ # or: sudo /etc/init.d/ssh start
 
 # Restart:
 sudo systemctl restart sshd
+ # or: sudo /etc/init.d/ssh restart
 
 # Stop:
 sudo systemctl stop sshd
+ # or: sudo /etc/init.d/ssh stop
 
 # Check ports available:
 ss -lpn
@@ -77,5 +84,12 @@ sudo vim /etc/ssh/sshd_config
 # PasswordAuthentication yes
 # PermitEmptyPasswords no
 # Banner none
+
+ # Configure to the highest security
+  # 1. Change port 22 to, i.e., 22445:
+          ...
+          # What ports, IPs and protocols we listen for
+          Port 22445
+          ...
 
 # Connect from other device with: ssh -p port-number user@host

@@ -1,0 +1,60 @@
+cd /var/www/
+sudo mkdir micrositios
+cd micrositios
+sudo mkdir public
+
+# Manage permissions (file ./permissions)
+sudo chgrp www-data /var/www/micrositios/
+sudo usermod -a -G www-data gonzalo
+sudo chmod -R 775 /var/www/micrositios/
+sudo chmod -R g+s /var/www/micrositios/
+sudo chown -R gonzalo /var/www/micrositios/
+
+# Sample html:
+vim /var/www/micrositios/index.html
+
+	<html>
+	    <head>
+	        <title>Welcome to Your_domain!</title>
+	    </head>
+	    <body>
+	        <h1>Success!  The your_domain server block is working!</h1>
+	    </body>
+	</html>
+
+# Create new virtual host file:
+sudo vim /etc/apache2/sites-available/micrositios.conf
+
+<VirtualHost *:8081>
+    ServerAdmin webmaster@localhost
+    ServerName micrositios
+    ServerAlias www.micrositios
+    DocumentRoot /var/www/micrositios/public
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    <Directory /var/www/micrositios/public>
+        Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	allow from all
+    </Directory>
+</VirtualHost>
+
+sudo vim /etc/apache2/ports.conf
+...
+Listen 80
+...
+Listen 8081
+...
+
+# Enable file:
+sudo a2ensite micrositios.conf
+
+# Disable default site:
+sudo a2dissite 000-default.conf
+
+# Test configuration errors:
+sudo apache2ctl configtest
+
+# Restart
+sudo systemctl restart apache2

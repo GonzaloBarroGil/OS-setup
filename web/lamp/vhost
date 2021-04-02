@@ -1,0 +1,36 @@
+# Source: https://blog.ahierro.es/como-configurar-virtual-hosts-en-apache-y-ubuntu/
+
+cd /var/www
+sudo mkdir micrositios
+cd micrositios
+sudo mkdir public
+
+# Manage permissions (cat /home/gonzalo/UserGuides/Apache/permissions)
+
+cd /etc/apache2/sites-available
+sudo cp 000-default.conf micrositios.conf
+sudo vim micrositios.conf
+
+<VirtualHost *:8081>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/micrositios/public
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    <Directory /var/www/micrositios/public>
+        Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	allow from all
+    </Directory>
+</VirtualHost>
+
+sudo vim /etc/apache2/ports.conf
+
+...
+Listen 80
+Listen 8081
+...
+
+sudo a2ensite micrositios.conf
+
+sudo service apache2 restart

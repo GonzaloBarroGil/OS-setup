@@ -1,0 +1,152 @@
+# https://youtu.be/RMeeifj-fzw
+
+01-Instalacion NVM, Node, Hola Mundo, Query Params, Query Filters,
+------------------------------------------------------------------
+
+# Linux:
+
+	sudo apt update
+	sudo apt upgrade
+	sudo apt dist-upgrade
+	sudo apt install gcc git python build-essential
+
+    https://github.com/nvm-sh/nvm
+
+    Bajar code-oss o vscodium (no compilada de windows, sino apt/git oficial)
+
+    nvm install 12
+
+# Windows
+
+	https://github.com/coreybutler/nvm-windows/releases/download/1.1.7/nvm-setup.zip
+	https://github.com/git-for-windows/git/releases/download/v2.25.1.windows.1/Git-2.25.1-64-bit.exe
+
+    nvm install 12.16.1
+
+    
+node -v
+
+npm install -g npm
+
+----------------------------------------------------------------------------
+NPM y NPX
+
+Intalar local o global para proyectos: npm
+
+Ejecutar para probar o preparar: npx
+---------------------------------------------------------------------------
+
+# Primer proyecto:
+mkdir first-api
+cd first-api
+npm init
+	package name: (first-api)
+	# Enter
+	version: (1.0.0)
+	# Cambiar a 0.0.1
+	description: Entrenamiento de Node-Express
+	entry point: (index.js)
+	test command:
+	git repository:
+	keywords:
+	author: @indec
+	license: (ISC)
+	# Cambiar a MIT
+	# Enter
+
+# Verificar que se agregó package.json
+
+# Instalar express:
+npm install --save express
+
+# Verificar carpeta node_modules y archivo package-lock.json
+# Con package-lock.json se puede instalar rápidamente con npm ci
+
+# Instalar dotenv (para variables de entono):
+npm install --save dotenv
+
+# Crear archivo .env
+PORT=4000
+
+# Instalar body-parser (middlewares para simplificar manejo de bodies):
+npm install --save body-parser
+
+# Crear index.js
+    require('dotenv').config(); // si .env está en el root del proyecto
+    // require('dotenv').config({path: '../.env'});  (si .env está en otra ruta)
+
+	// No usar var para variables. Usar let para variables y const para constantes
+
+	const express = require('express');
+	const app = express();
+    const bodyParser = require('body-parser');
+
+    const {PORT} = process.env; // la variable creada arriba en .env
+
+    app.use(bodyParser.json({limit: '20MB'}));
+
+    app.use(bodyParser.urlencoded({}));
+
+	/**
+	* Métodos HTTP:
+	*	GET	pedir datos
+	*	POST	crear datos
+	*	PUT	modificar datos
+	*	DELETE	borrar datos
+	*	
+	*	COPY	copiar datos nodo a nodo
+	*	REQUEST	WebHooks, nodo a nodo y guardado
+	*/	
+
+	/** Métodos express:
+	*	.get('/ruta', operacionesPrevias, operacionesDeRespuesta)
+	*		operacionesPrevias(req, res, next) => {
+	*			operaciones ...
+	*			next();
+	*		}
+	*		operacionesDeRespuesta(req, res, next) => {
+	*			operaciones ...
+	*			res.send();
+	*		}
+	app.get('/', (req, res, next) => {
+		/** req:
+		*	params: parámetros por url (url/.../:param1/:param2 ...)
+		*		req.params.param1, req.params.param2, etc.
+		*	query: query string (url/...?atributo1:valor1&atributo2:valor2 ...)
+		*		req.query.atributo1, req.query.atributo2, etc.
+		*	body: Cuerpo del mensaje HTTP, no va por url
+		*******
+		/** res:
+		*	res.send(datos) 
+		*		Se envian datos en el cuerpo de la respuesta
+		*	res.sendStatus(codigo)
+		*		Sólo envíá un código (200, 403, 500, etc.)
+		*******
+		/** next:
+		*	Continuar ejecución
+		*******
+		res.send('Hola Mundo');
+	}
+
+	// Paso 2: ***
+	app.get('/query', (req, res, next) => {res.send(req.query.id)}
+		// probar: localhost:1000/query?id=hola	
+
+	app.get('/:id', (req, res, next) => { res.send(req.params.id)})
+		// probar: localhost:1000/primer-param
+
+	// Verificar que al cambiar el orden de los métodos el resultado es
+	// incorrecto. La petición recorre cada método por orden y toma el que
+	// se adecue a la cantidad y forma de los parámetros.
+	// Cambiar el orden, probar de nuevo y probar el otro.
+	// ***********
+
+	app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+
+
+# Inicializar proyecto git
+
+# --- FIN ---
+
+# REV: Hacer todo inicializando el proyecto git previamente, y commiteando cada paso,
+
