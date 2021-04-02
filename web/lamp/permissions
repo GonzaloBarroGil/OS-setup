@@ -1,0 +1,21 @@
+# Source: https://blog.ahierro.es/archivos-y-permisos-de-usuario-en-apache-y-linux/
+
+# Add to www-data group:
+sudo chgrp www-data /var/www/micrositios
+
+# Add user to www-data group:
+sudo usermod -a -G www-data gonzalo
+
+# Permissions:
+sudo chmod -R 775 /var/www/micrositios
+sudo chmod -R g+s /var/www/micrositios
+
+# Make user owner:
+sudo chown -R gonzalo /var/www/micrositios
+
+# Check:
+ls -l /var/wwww/
+
+	total 2
+	drwxrwxr-x 4 gonzalo www-data 4096 apr 20 18:01 html
+	drwxrwxr-x 8 gonzalo www-data 4096 apr 20 18:07 micrositios

@@ -1,0 +1,34 @@
+1. ==================================================================================================
+Error: "... the image failed likely because the server is busy or does not have enough resources ..."
+
+Solution applied: Increase WordPress Memory limit:
+
+$	vim /var/www/...<path to wordpress files>.../wp-config.php
+
+Add line before "define( 'WP_MEMORY_LIMIT', '256M' );":
+
+	define( 'WP_MEMORY_LIMIT', '256M' );
+
+Save and close.
+
+$	sudo systemctl restart apache2
+(SOLVED)
+
+2. ==================================================================================================
+Error: "... Unable to create directory wp-content/uploads/....<path whit year and month>. Is its parent directory writable by the server?"
+
+Solution applied: Specify media storage directory:
+
+$	vim /var/www/...<path to wordpress files>.../wp-config.php
+
+Add line before "define( 'WP_MEMORY_LIMIT', '256M' );":
+
+	define( 'UPLOADS', 'wp-content/uploads' );
+(NOT SOLVED)
+
+Solution 2: Redefine permissions:
+
+$	sudo chown -R www-data:www-data /var/www/...<path to wordpress files>
+$       sudo systemctl restart apache2
+ 15 (SOLVED)
+
