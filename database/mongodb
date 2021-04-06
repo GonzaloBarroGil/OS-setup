@@ -1,0 +1,16 @@
+# Uninstalling MongoDB
+# https://www.positronx.io/how-to-completely-uninstall-mongodb-from-linux/
+
+# 1. Stop MongoDB Daemon Process
+    sudo service mongod stop
+
+# 2. Use APT to Remove MongoDB Packages
+    sudo apt-get purge mongodb-org*
+
+# 3. Remove MongoDB Logs
+    # Check /var/log/mongodb/
+    sudo rm -r /var/log/mongodb
+
+# 4. Remove DB
+    # Check /var/lib/mongodb
+    sudo rm -r /var/lib/mongodb
