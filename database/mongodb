@@ -1,3 +1,38 @@
+# Install MongoDB on Debian
+# https://linuxize.com/post/how-to-install-mongodb-on-debian-10/
+
+# 1. Required packages
+    sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl
+
+# 2. Add the MongoDB GPG
+    # Check version (currently 4.4.4)
+    curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+  # Or
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+# 3. Enable repository
+    # Check mongo version and Debian (buster or stretch)
+    sudo add-apt-repository 'deb https://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main'
+  # Or
+    echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+# 4. Update the packages list and install the mongodb-org meta-package
+    sudo apt update
+    sudo apt install mongodb-org
+
+    # Installed packages:
+    # * mongodb-org-server (mongod daemon, init scrips and config)
+    # * mongodb-org-mongos (mongos daemon)
+    # * mongodb-org-shell (JavaScript interface)
+    # * mongodb-org-tools (tools for import and export data, statistics and more)
+
+    # Optional: pin packages to prevent unintended upgrades
+	echo "mongodb-org hold" | sudo dpkg --set-selections
+	echo "mongodb-org-server hold" | sudo dpkg --set-selections
+	echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+	echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+	echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+
 # Uninstalling MongoDB
 # https://www.positronx.io/how-to-completely-uninstall-mongodb-from-linux/
 
