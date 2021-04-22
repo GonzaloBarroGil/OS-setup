@@ -55,6 +55,8 @@ vim ~/.ssh/config
 #  Test: ssh -T git@gitlab.com
 
 ## SERVER:
+# https://www.redeszone.net/seguridad-informatica/servidor-ssh-en-linux-manual-de-configuracion-para-maxima-seguridad/
+
 # Check for service:
 sudo systemctl status sshd
  # or: sudo /etc/init.d/ssh status
