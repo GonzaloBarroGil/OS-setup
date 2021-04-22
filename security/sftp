@@ -1,0 +1,21 @@
+sftp username@host
+# Propmt:
+sftp>
+
+# List connected remote fs:
+sftp> ls
+
+# List local fs:
+sftp> lls
+
+# Change remote directory:
+sftp> cd
+
+# Change local directory:
+sftp> lcd
+
+# Upload:
+sftp> put filename
+
+# Download:
+sftp> get filename
