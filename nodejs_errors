@@ -1,0 +1,40 @@
+## Errors:
+# ... No version of chokidar is available ...
+
+  rm -rf node_modules/
+
+  rm package-lock.json
+
+  npm cache verify
+
+  sudo npm i -g npm
+
+  npm i
+
+# ... ERESOLVE unable to resolve dependency tree ...
+
+  # Check for "peer" in "Could not resolve dependency:..." block, 
+  # related to "Found:...", in error message stack and install it, e.g.:
+  # "npm ERR! peer @babel/core@"^7.13.0" from ..."
+  npm install --save @babel/core
+
+# Node.js heap out of memory
+    # add env to .bashrc:
+        export NODE_OPTIONS=--max_old_space_size=4096
+
+    source ~/.bashrc
+
+# Error ENOSPC System limit for number of file watchers reached
+# (https://klequis.io/error-enospc-system-limit-for-number-of-file-watchers-reached/)
+    # check current limit:
+    cat /proc/sys/fs/inotify/max_user_watches
+
+    # change to 524288 file watches limit:
+    echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+
+    # read and use from kernel
+    sudo sysctl -p
+
+    # check again:
+    cat /proc/sys/fs/inotify/max_user_watches
+
