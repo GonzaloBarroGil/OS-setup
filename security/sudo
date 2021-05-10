@@ -1,0 +1,16 @@
+# Enable root user
+# 1.
+sudo -i
+
+# 2. Change password
+sudo passwd root
+
+Ctrl+F1
+
+# Source: https://blog.desdelinux.net/cual-es-la-diferencia-entre-sudo-y-su/
+
+# Avoid grace period:
+sudo nano /etc/sudoers
+
+# Add at end of file:
+Defaults:ALL timestamp_timeout=0

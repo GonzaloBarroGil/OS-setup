@@ -1,0 +1,26 @@
+sudo apt install php libapache2-mod-php php-mysql
+
+# Configure apache for php
+# Move index.php before index.html
+sudo nano /etc/apache2/mods-enabled/dir.conf
+
+	<IfModule mod_dir.c>
+		DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+	</IfModule>
+
+sudo systemctl restart apache2
+
+sudo systemctl status apache2
+
+# Check modules:
+apt search php- | less
+
+# Module info:
+apt show <module name>
+
+# Install desired modules:
+sudo apt install <module name> <module name> ...
+
+
+
+

@@ -1,0 +1,27 @@
+# Video de Domingo Muñoz en YouTube: https://youtu.be/muAKPiPqW6g
+
+sudo apt update
+sudo apt install mariadb-client mariadb-server php7.0 php7.0-mysql apache2 libapache2-mod-php7.0
+
+create database wordpress;
+use wordpress;
+create user 'indec'@'localhost';
+grant all privileges on wordpress.* to 'indec'@'localhost' identified by '<password>';
+flush privileges;
+exit;
+
+cd /var/www/micrositios
+
+https://wordpress.org.download/
+
+<Download WordPress 5.4> -> Copy Link Location
+
+https://wordpress.org/latest.zip
+
+ó
+
+https://es-ar.wordpress.org/download/
+
+<Descargar WordPress 5.4> -> Copy Link Location
+
+https://es-ar.wordpress.org/latest-es_AR.zip
