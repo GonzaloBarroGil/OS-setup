@@ -1,0 +1,21 @@
+# Source https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/
+
+# Compress files or folders:
+  tar -czvf compressed-file.tar.gz /path/to/directory-or-file-to-compress
+
+  # Multiple files or folders:
+  tar -czvf compressed-file.tar.gz /path-1/directory-1 /path-2/directory-2 /path/file-1
+
+  # Exclude files or folders:
+  tar -czvf compressed-file.tar.gz /path/directory --exclude=/path/directory/directory-1 --exclude=/path/directory/file-1
+
+  # wildcards like * allowed in all cases
+
+# bzip2 compression:
+  tar -cjvf archive.tar.bz2 file-or-folder
+
+# Extract:
+  tar -xzvf archive.tar.gz
+
+  # Extracto to another dir:
+  tar -xzvf archive.tar.gz -C /tmp  
