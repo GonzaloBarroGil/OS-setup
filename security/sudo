@@ -1,16 +1,32 @@
+# Resolve " [user] is not in the sudoers file ..." error
+# Source: https://www.linuxuprising.com/2019/09/fix-username-is-not-in-sudoers-file.html
+# In current session:
+ groups
+ # If sudo doesn't appears in the list, then current user can't run sudo
+ # Add user to root
+ su -
+ usermod -aG sudo YOUR_USERNAME
+ exit
+
+# If the system doesn't recongize sudo command:
+ sudo su -
+ apt install sudo
+ exit
+
+
 # Enable root user
 # 1.
 sudo -i
 
 # 2. Change password
-sudo passwd root
+ sudo passwd root
 
-Ctrl+F1
+ Ctrl+F1
 
 # Source: https://blog.desdelinux.net/cual-es-la-diferencia-entre-sudo-y-su/
 
 # Avoid grace period:
-sudo nano /etc/sudoers
+ sudo nano /etc/sudoers
 
-# Add at end of file:
-Defaults:ALL timestamp_timeout=0
+ # Add at end of file:
+ Defaults:ALL timestamp_timeout=0
