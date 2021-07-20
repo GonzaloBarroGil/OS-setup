@@ -1,0 +1,61 @@
+ # Source: https://www.gestionatuweb.net/android-studio-en-debian-10-buster-y-derivadas-no-snap-ni-flatpak/
+
+# Check for java:
+java --version
+
+# ... or install the last one:
+sudo apt install openjdk-11-jre
+
+# (I started here)
+# Enable 32 bit architecture on 64 bit systems:
+sudo dpkg --add-architecture i386
+sudo apt update
+
+# Install 64 bit sys libraries:
+sudo apt install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+
+--------------------------
+
+# Download:
+https://developer.android.com/studio?hl=es-419
+
+sudo tar xvzf Downloads/android-studio-ide-202.7486908-linux.tar.gz -C /opt
+
+cd /opt/android-studio/bin/
+
+sh ./studio.sh
+	On Data Sharing dialog, click on "Don't send"
+
+	Look at https://developer.android.com/studio/run/emulator-acceleration?utm_source=android-studio#vm-linux
+
+	Click on Finish
+
+	Follow https://reactnative.dev/docs/environment-setup
+	(For using with React Native)
+
+		Click on "Configure" button and select "SDK Manager"
+		(or under Appearance & Behavior → System Settings → Android SDK)
+
+		On SDK Platforms tab, check "Show Package Details"
+		
+		Expand Android 10 (Q)
+		
+		Check Android SDK Platform 29
+		Check Intel x86 Atom_64 System Image (* this one) or Google APIs Intel x86 Atom System Image
+
+		On SDK Tools tab, check "Show Package Details"
+
+		Expand Android SDK Build-Tools
+
+		Check 29.0.2
+
+		Click on "Apply"
+
+		Add to .bashrc:
+			export ANDROID_HOME=$HOME/Android/Sdk
+			export PATH=$PATH:$ANDROID_HOME/emulator
+			export PATH=$PATH:$ANDROID_HOME/tools
+			export PATH=$PATH:$ANDROID_HOME/tools/bin
+			export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+		

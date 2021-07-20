@@ -46,9 +46,10 @@ $ sudo dd bs=4M if=/home/gonzalo/Downloads/debian-live-10.6.0-amd64-gnome+nonfre
 #-------------------------------------------
 
 # KDE + NONFREE:
-# Download from https://cdimage.debian.org/images/unofficial/non-free/images-including-firmware/10.6.0-live+nonfree/amd64/iso-hybrid/
-# 4a910e1a5b2dbd06aa8ebc8d0d8fed555d81babfdde65da666ea5e77c22af566  debian-live-10.6.0-amd64-kde+nonfree.iso
+# Download from https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/10.10.0-live+nonfree/amd64/iso-hybrid/
+#	debian-live-10.10.0-amd64-kde+nonfree.iso
+# f46ee965fe59840dcc9c69fe916507f26df1f24b0e0b91ceacdca4c7f3de3e0b  debian-live-10.10.0-amd64-kde+nonfree.iso
 
-$ sha256 4a910e1a5b2dbd06aa8ebc8d0d8fed555d81babfdde65da666ea5e77c22af566  debian-live-10.6.0-amd64-kde+nonfree.iso
+$ sha256 f46ee965fe59840dcc9c69fe916507f26df1f24b0e0b91ceacdca4c7f3de3e0b  debian-live-10.10.0-amd64-kde+nonfree.iso
 
-$ sudo dd bs=4M if=/home/gonzalo/Downloads/debian-live-10.6.0-amd64-kde+nonfree.iso of=/dev/sdb status=progress oflag=sync
+$ sudo dd bs=4M if=/home/gonzalo/Downloads/debian-live-10.10.0-amd64-kde+nonfree.iso of=/dev/sdb status=progress oflag=sync
