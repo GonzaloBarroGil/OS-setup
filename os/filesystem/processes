@@ -1,0 +1,26 @@
+sudo sysctl fs.inotify
+	fs.inotify.max_queued_events = 16384
+	fs.inotify.max_user_instances = 128
+	fs.inotify.max_user_watches = 65536
+
+# (or check with cat 
+
+# Set max_user_watches to the maximum number of files that can be watched (524288, around 512MB of RAM consumed in a 64-bit system) and change the number of root dirs for watching to 1024:
+	sudo -s
+	echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+	echo "fs.inotify.max_user_instances=1024" >> /etc/sysctl.conf
+
+        ########################################################################################
+	# Optional; Increase the open file limit.
+	#	Retrieve the current value by running the following command:
+	#	 cat /proc/sys/fs/file-max
+	#		9223372036854775807 (very huge, not necessary in my case)
+	#	In any other case permanently increase the open file limit (such as 2097152):
+	#	 echo "fs.file-max=2097152" >> /etc/sysctl.conf
+	########################################################################################
+	exit
+	
+	# reload changes:
+	sudo sysctl -p /etc/sysctl.conf
+
+

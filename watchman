@@ -1,0 +1,16 @@
+sudo apt-get install build-essential
+sudo apt-get install python-dev
+sudo apt-get install automake
+sudo apt-get install autoconf
+sudo apt-get install libtool
+
+cd /tmp
+git clone https://github.com/facebook/watchman.git
+cd watchman
+git checkout v2020.07.13.00  # or whatever is now the latest stable release
+
+./autogen.sh
+./configure --enable-statedir=/tmp
+sudo make
+sudo make install
+sudo mv watchman /usr/local/bin/watchman
